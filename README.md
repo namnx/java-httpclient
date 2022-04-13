@@ -11,12 +11,13 @@ but failed when run inside a container.
 
 * Fetch a url using OkHttp:
 ```shell
-curl localhost:8080/get1?url=https://httpbin.org/get
+curl -v "localhost:8080/get1?url=https://httpbin.org/get"
+curl -v "localhost:8080/get1?tls=TLSv1.2&url=https://httpbin.org/get"
 ```
 
 * Fetch a url using Java 11 HttpClient:
 ```shell
-curl localhost:8080/get2?url=https://httpbin.org/get
+curl -v "localhost:8080/get2?url=https://httpbin.org/get"
 ```
 
 
