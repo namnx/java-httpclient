@@ -30,6 +30,12 @@ curl localhost:8080/get2?url=https://httpbin.org/get
 docker run -ti --rm -p8080:8080 java-httpclient-springboot
 ```
 
+* Run with network debugging:
+```shell
+docker run -ti --rm -p8080:8080 -e LOGGING_LEVEL_ROOT=DEBUG \
+  -e JAVA_OPTS="-Djavax.net.debug=all" java-httpclient-springboot
+```
+
 ## Build the container image using Jib
 ```shell
 ./gradlew jibDockerBuild --image=java-httpclient-jib
@@ -40,8 +46,19 @@ docker run -ti --rm -p8080:8080 java-httpclient-springboot
 docker run -ti --rm -p8080:8080 java-httpclient-jib
 ```
 
+* Run with networking debugging:
+```shell
+docker run -ti --rm -p8080:8080 -e LOGGING_LEVEL_ROOT=DEBUG \
+  -e JAVA_OPTS="-Djavax.net.debug=all" java-httpclient-jib
+```
+
 
 ## Troubleshooting
+* Get the running container-id:
+```shell
+docker ps
+```
+
 * Get a shell into a running container:
 ```shell
 docker exec -it <container-id> /bin/bash
